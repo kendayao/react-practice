@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Header from "./Header"
 import Note from "./Note"
 import Footer from "./Footer"
@@ -7,6 +7,9 @@ import notes from "./notes"
 
 
 function App(){
+
+    const [notes, setNotes] = useState([])
+
     return (
         <div>
             <Header />
