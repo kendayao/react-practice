@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./CreateArea.css"
 
-function CreateArea() {
+function CreateArea(props) {
 
   const [noteInput, setNoteInput] = useState({
     title: "",
@@ -9,7 +9,6 @@ function CreateArea() {
   })
 
   function handleChange(event){
-    event.preventDefault()
 
     const {name , value}=event.target
 
@@ -19,19 +18,27 @@ function CreateArea() {
         [name]: value
       }
     })
+    }
+  
+  function submitNote(event){
+      event.preventDefault()
+      props.onAdd(noteInput)
+      setNoteInput({
+        title: "",
+        content: ""
+      })
 
+    }
 
-  }
-
-console.log(noteInput)
-
+  
+  
 
     return (
         <div>
-          <form>
+          <form >
             <input onChange={handleChange} name="title" placeholder="Title" value={noteInput.title}/>
             <textarea onChange={handleChange}  name="content" placeholder="Take a note..." rows="3" value={noteInput.content} />
-            <button>Add</button>
+            <button onClick={submitNote}>Add</button>
           </form>
         </div>
       );
