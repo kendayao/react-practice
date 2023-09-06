@@ -1,45 +1,46 @@
 import React , {useState} from 'react'
-import Header from "./Header"
-import Note from "./Note"
-import Footer from "./Footer"
-import CreateArea from "./CreateArea"
-import notes from "./notes"
+
 
 
 function App(){
 
-    const [notes, setNotes] = useState([])
-
-    
-
-    function addNote(note){
-        return setNotes([...notes,note])
-    }
-
-    function deleteNote(id){
-        setNotes(prevValues=>{
-             return prevValues.filter((note,index)=>{
-                return index !== id})
-        })
-            
+    const categories = [ 
+        {
+            id: 1,
+            title: 'Hats'
+        },
+        {
+            id: 2,
+            title: 'Jackets'
+        },
+        {
+            id: 3,
+            title: 'Sneakers'
+        },
+        {
+            id: 4,
+            title: 'Womens'
+        },
+        {
+            id: 5,
+            title: 'Men'
         }
-    
 
-    
-    
+    ]
 
     return (
-        <div>
-            <Header />
-            <CreateArea onAdd={addNote}/>
-            {notes.map((noteItem, index)=>{
-                return <Note key={index} id={index} title={noteItem.title} content={noteItem.content} onDelete={deleteNote}/>
-            })}
-            
-            <Footer />
+        <div className="categories-container">
+            {categories.map(({title})=>(
+                <div className="category-container">
+                    <div className="category-body-container">
+                        <h2>{title}</h2>
+                        <p>Shop Now</p>
+                    </div>
+                </div>
+            ))}
         </div>
-
     )
+  
 }
 
 export default App
