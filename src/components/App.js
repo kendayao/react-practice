@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
-import Category from "./Category.js"
-import "./categories.scss"
+import Directory from './Directory'
+
 
 
 function App(){
@@ -34,11 +34,7 @@ function App(){
     ]
 
     return (
-        <div className="categories-container">
-            {categories.map((category)=>(
-                <Category key={category.id} category={category} />
-            ))}
-        </div>
+      <Directory categories={categories}/>
     )
   
 }
