@@ -2,6 +2,7 @@ import React from 'react'
 import Directory from '../components/Directory'
 
 
+
 function Home(){
 
     const categories = [ 
@@ -33,7 +34,11 @@ function Home(){
     ]
 
     return (
-      <Directory categories={categories}/>
+
+      <div>
+        <Directory categories={categories}/>
+      </div>
+      
     )
 }
 
