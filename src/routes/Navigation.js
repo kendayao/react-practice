@@ -1,14 +1,22 @@
-import React from 'react'
-import{Outlet} from 'react-router-dom'
+import React, {Fragment} from 'react'
+import Outlet, {Link} from 'react-router-dom'
 
 function Navigation(){
     return(
-      <div>
-        <div>
-          <h1>Navigation Bar</h1>
+      <Fragment>
+        <div className="navigation">
+            <Link className='logo-container' to='/'>
+                <div>Logo</div>
+            </Link>
+            <div className='nav-links-container'>
+                <Link className='nav-link' to='/shop'>
+                
+                </Link>
+
+            </div>
         </div>
         <Outlet/>
-      </div>
+      </Fragment>
     )
   
   }
