@@ -3,7 +3,7 @@ import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider} from '
 import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: "AIzaSyDz9RrvhOSYIvWorihm8XrkyuWlHqaxgL8",
     authDomain: "crwn-clothing-db-e0937.firebaseapp.com",
     projectId: "crwn-clothing-db-e0937",
     storageBucket: "crwn-clothing-db-e0937.appspot.com",
@@ -28,4 +28,29 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   console.log(userDocRef)
   const userSnapshot = await getDoc(userDocRef)
   console.log(userSnapshot.exists())
+
+  if(!userSnapshot.exists()){
+    const {displayName, email}=userAuth;  
+    const createAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createAt
+      });
+
+
+    } catch(error){
+
+      console.log('error in returning user', error.message)
+    }
+  
+  return userDocRef
+  
+  
+  
+  }
+
+
 }
