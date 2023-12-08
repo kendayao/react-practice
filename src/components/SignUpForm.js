@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../utils/firebase/firebase'
+import FormInput from './FormInput'
 
 
 const defaultFormField = {
