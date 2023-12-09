@@ -53,19 +53,41 @@ function SignUpForm(){
         <div>
             <h1>Sign up with your email and password</h1>
             <form onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                <input type="text" name="displayName" value={displayName} onChange={handleChange} required/>
+                <FormInput 
+                    label="Display Name"
+                    type="text" 
+                    name="displayName" 
+                    value={displayName} 
+                    onChange={handleChange} 
+                    required
+                />
 
-                <label>Email</label>
-                <input type="email" name="email" value={email} onChange={handleChange} required/>
+                <FormInput 
+                    label="Email"
+                    type="text" 
+                    name="email" 
+                    value={email} 
+                    onChange={handleChange} 
+                    required
+                />
 
-                <label>Password</label>
-                <input type="password" name="password" value={password} onChange={handleChange} required/>
+                <FormInput 
+                    label="Passsword"
+                    type="text" 
+                    name="password" 
+                    value={password} 
+                    onChange={handleChange} 
+                    required
+                />
 
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleChange} required/>
-
-                <button type="submit">Sign Up</button>
+                <FormInput 
+                    label="Confirm Password"
+                    type="text" 
+                    name="confirmPassword" 
+                    value={displayName} 
+                    onChange={handleChange} 
+                    required
+                />
             </form>
         </div>
     )
