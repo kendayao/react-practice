@@ -3,7 +3,7 @@ import { getRedirectResult } from 'firebase/auth'
 import { auth, signInWithGooglePopup, signInWithGoogleRedirect, createUserDocumentFromAuth } from "../utils/firebase/firebase"
 import SignUpForm from '../components/SignUpForm'
 
-function SignIn(){
+function Authentication(){
 
     // useEffect(async()=>{
     //     const response = await getRedirectResult(auth)
@@ -29,4 +29,4 @@ function SignIn(){
     
 }
 
-export default SignIn
+export default Authentication
