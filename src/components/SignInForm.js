@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import "./SignInForm.scss"
 import FormInput from './FormInput'
 import Button from './Button'
-import { signInWithGooglePopup, createUserDocumentFromAuth } from '../utils/firebase/firebase'
+import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../utils/firebase/firebase'
 
 const defaultFormField = {
     email: '',
@@ -29,7 +29,7 @@ function SignInForm(){
         
 
         try{
-           
+           const response = await signInAuthUserWithEmailAndPassword()
             resetFormFields();
         } catch(error){
 
@@ -66,9 +66,11 @@ function SignInForm(){
                     onChange={handleChange} 
                     required
                 />
-            
-                <Button type='submit'>Sign In</Button>
-                <Button buttonType='google' onClick={signInWithGoogle}>Sign In With Google</Button>
+                <div className='buttons-container'>
+                    <Button type='submit'>Sign In</Button>
+                    <Button buttonType='google' onClick={signInWithGoogle}>Sign In With Google</Button>
+                </div>
+               
             </form>
         </div>
     )
