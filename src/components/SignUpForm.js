@@ -84,7 +84,7 @@ function SignUpForm(){
                     label="Confirm Password"
                     type="text" 
                     name="confirmPassword" 
-                    value={displayName} 
+                    value={confirmPassword} 
                     onChange={handleChange} 
                     required
                 />

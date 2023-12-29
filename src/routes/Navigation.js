@@ -1,9 +1,13 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useContext} from 'react'
 import {Outlet, Link} from 'react-router-dom'
 import {ReactComponent as CrwnLogo } from '../assets/crown.svg'
 import './Navigation.scss'
+import {UserContext} from '../contexts/user.context'
 
 function Navigation(){
+    //component rerenders whenever current user from UserContext gets updated
+    const context = useContext(UserContext)
+    console.log(context.currentUser)
     return(
       <Fragment>
         <div className="navigation">
