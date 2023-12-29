@@ -7,6 +7,7 @@ import Authentication from '../routes/Authentication'
 
 
 
+
 function Shop(){
   return(<h1>I am the shop page</h1>)
 }
