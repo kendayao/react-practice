@@ -7,12 +7,12 @@ import {signOutUser} from '../utils/firebase/firebase'
 
 function Navigation(){
     //component rerenders whenever current user from UserContext gets updated
-    const {currentUser, setCurrentUser} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
-    const signOutHandler = async () => {
-      await signOutUser();
-      setCurrentUser(null)
-    }
+    // const signOutHandler = async () => {
+    //   await signOutUser();
+    //   setCurrentUser(null)
+    // }
 
     
     return(
@@ -28,7 +28,7 @@ function Navigation(){
 
                 {
                   currentUser ? (
-                    <span className='nav-link' onClick={signOutHandler}>SIGN OUT</span>
+                    <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
                   ) : (
                     <Link className='nav-link' to='/auth'>
                       SIGN IN
