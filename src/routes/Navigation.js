@@ -5,11 +5,13 @@ import CartDropdown from '../components/CartDropdown'
 import {ReactComponent as CrwnLogo } from '../assets/crown.svg'
 import './Navigation.scss'
 import {UserContext} from '../contexts/user.context'
+import {CartContext} from '../contexts/cart.context'
 import {signOutUser} from '../utils/firebase/firebase'
 
 function Navigation(){
     //component rerenders whenever current user from UserContext gets updated
     const {currentUser} = useContext(UserContext)
+    const {isCartOpen}=useContext(CartContext)
 
     // const signOutHandler = async () => {
     //   await signOutUser();
@@ -39,7 +41,7 @@ function Navigation(){
                 }
                 <CartIcon/>
             </div>
-            <CartDropdown/>
+            {isCartOpen&&<CartDropdown/>}
         </div>
         <Outlet/>
       </Fragment>
