@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app'
 import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth'
-import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
+import {getFirestore, doc, getDoc, setDoc, collection, writeBatch} from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDz9RrvhOSYIvWorihm8XrkyuWlHqaxgL8",
@@ -71,3 +71,10 @@ export const signOutUser = async () => await signOut(auth);
 //observer listener (hook into stream of events, trigger soemthing based on these changes)
 //onAuthStateChanged calls the callback everytime auth changes (user sign in/ sign out)
 export const onAuthStateChangedListener = (callback) =>onAuthStateChanged(auth, callback)
+
+
+// upload data to firestore collectionKey(ex. users, categories)objects(documents to add)
+export const addCollectionAndDocuments = async (collectionKey, objects) => {
+  
+  const collectionRef = collection(db,collectionKey);
+}
