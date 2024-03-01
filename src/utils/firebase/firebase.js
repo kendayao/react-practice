@@ -74,7 +74,19 @@ export const onAuthStateChangedListener = (callback) =>onAuthStateChanged(auth, 
 
 
 // upload data to firestore collectionKey(ex. users, categories)objects(documents to add)
-export const addCollectionAndDocuments = async (collectionKey, objects) => {
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   
   const collectionRef = collection(db,collectionKey);
+  //batch instance 
+  const batch = writeBatch(db);
+  //each category object ex hats, womens etcs
+  objectsToAdd.forEach((object)=>{
+    //create doc ref where key is the title
+    const docRef=doc(collectionRef, object.title.toLowerCase());
+    //set location in firebase with the object
+    batch.set(docRef, object)
+  })
+  //begin firing to add data to firebase
+  await batch.commit()
+  console.log('done')
 }
