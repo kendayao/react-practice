@@ -20,6 +20,7 @@ function Navigation(){
 
     
     return(
+      //Fragment use it when dont want to render html element . this is due to requirement of react for a parent div
       <Fragment>
         <div className="navigation">
             <Link className='logo-container' to='/'>

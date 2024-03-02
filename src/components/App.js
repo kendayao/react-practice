@@ -7,6 +7,7 @@ import Authentication from '../routes/Authentication'
 import Shop from '../routes/Shop'
 import Checkout from '../routes/Checkout'
 
+//Outlet will display below the navigation (top level component which will display everytime)
 
 function App(){
 

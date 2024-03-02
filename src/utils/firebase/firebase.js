@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app'
 import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth'
-import {getFirestore, doc, getDoc, setDoc, collection, writeBatch} from 'firebase/firestore'
+import {getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs} from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDz9RrvhOSYIvWorihm8XrkyuWlHqaxgL8",
@@ -77,7 +77,7 @@ export const onAuthStateChangedListener = (callback) =>onAuthStateChanged(auth, 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   
   const collectionRef = collection(db,collectionKey);
-  //batch instance 
+  //batch instance to add documents
   const batch = writeBatch(db);
   //each category object ex hats, womens etcs
   objectsToAdd.forEach((object)=>{
@@ -89,4 +89,31 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   //begin firing to add data to firebase
   await batch.commit()
   console.log('done')
+}
+
+//retreive documents frm the firebase
+export const getCategoriesAndDocuments = async () => {
+  //collection that is being targetted
+  const collectionRef = collection(db, 'categories');
+
+  const q = query(collectionRef);
+
+  //fetch documents that we want and store in querysnapshot
+  const querySnapshot = await getDocs(q);
+  
+  //snapshots is data themselves which is array of individual documents
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot)=>{
+    console.log(acc)
+    //console logs all the title in categories with array of items for each document
+    const {title, items}=docSnapshot.data();
+
+    acc[title.toLowerCase()]=items;
+    console.log(items)
+    //console logs array of items in each document in category
+
+    return acc;
+  })
+  
+  
+  return categoryMap;
 }
