@@ -100,19 +100,21 @@ export const getCategoriesAndDocuments = async () => {
 
   //fetch documents that we want and store in querysnapshot
   const querySnapshot = await getDocs(q);
+
   
   //snapshots is data themselves which is array of individual documents
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot)=>{
     console.log(acc)
-    //console logs all the title in categories with array of items for each document
+    
     const {title, items}=docSnapshot.data();
 
+    //add new categories items to object
     acc[title.toLowerCase()]=items;
-    console.log(items)
+    console.log(acc)
     //console logs array of items in each document in category
 
     return acc;
-  })
+  },{})
   
   
   return categoryMap;
