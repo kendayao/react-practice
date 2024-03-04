@@ -104,15 +104,16 @@ export const getCategoriesAndDocuments = async () => {
   
   //snapshots is data themselves which is array of individual documents
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot)=>{
-    console.log(acc)
+    
     
     const {title, items}=docSnapshot.data();
-
-    //add new categories items to object
+    
+    //add new categories items to object (assigned title to items)
     acc[title.toLowerCase()]=items;
-    console.log(acc)
-    //console logs array of items in each document in category
-
+    
+    
+    
+    //once done mapping and adding to object return acc to cateogryMaps
     return acc;
   },{})
   
