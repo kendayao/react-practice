@@ -43,9 +43,15 @@ export const UserProvider = ({children})=>{
 
     
     
-    //when user is found in useEffect tgus setCurrentUser function runs
+    //when user is found in useEffect this setCurrentUser function runs
+    // ACTION
     const setCurrentUser = (user) => {
-        dispatch({type:USER_ACTION_TYPES.SET_CURRENT_USER, payload: user})
+        dispatch(
+            {   
+                type:USER_ACTION_TYPES.SET_CURRENT_USER, 
+                payload: user
+            }
+            )
     }
 
     const value = {currentUser, setCurrentUser}
@@ -75,7 +81,7 @@ export const UserProvider = ({children})=>{
 
 
 
-//reducers are functons that return back an object.reason why return new object that is how react knows something has changed
+//reducers are functons that return back an object.reason why return new object that is how react knows something has changed. reducers only store readable values
 
 /*
     const userReducer=(state, action)=>{
