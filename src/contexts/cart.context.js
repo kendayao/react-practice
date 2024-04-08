@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useReducer } from 'react'
+import { createAction } from '../utils/reducer/reducer'
 
 const addCartItem = (cartItems, productToAdd) => {
     
@@ -58,7 +59,7 @@ const CART_ACTION_TYPES = {
 }
 
 const INITAL_STATE = {
-    isCartOpen: true,
+    isCartOpen: false,
     cartItems: [],
     cartCount: 0,
     cartTotal: 0
@@ -72,6 +73,7 @@ const cartReducer = (state, action) => {
         case CART_ACTION_TYPES.SET_CART_ITEMS:
             return{
                 ...state,
+                //payload is an object in this case so spread payload, otherwise due like isCartOpen: payload ex
                 ...payload
             };
         case CART_ACTION_TYPES.SET_IS_CART_OPEN:
@@ -138,7 +140,7 @@ export const CartProvider = ({children})=>{
     }
 
     const setIsCartOpen = (bool) => {
-        dispatch({type:CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: bool})
+        dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool))
     }
 
     const value = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, cartCount, removeItemFromCart, clearItemFromCart, cartTotal}
